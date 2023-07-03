@@ -1,7 +1,7 @@
 using System.Net;
 using Newtonsoft.Json;
 
-namespace BuberDinner.API.Middleware;
+namespace BuberDinner.Api.Middleware;
 
 public class ErrorHandlingMiddleware
 {

@@ -3,8 +3,8 @@ POST {{host}}/auth/register
 Content-Type: application/json
 
 {
-    "firstName":"Morxxdechai",
-    "lastName":"Ma11rtinband",
-    "email":"moder@gmail.com",
+    "firstName":"45",
+    "lastName":"QAZ",
+    "email":"aaa@gmail.com",
     "password":"abc123!"
 }

@@ -4,5 +4,5 @@ namespace BuberDinner.Application.Services.Authentication.Common;
 
 public record AuthenticationResult(
     User User,
-    string token
+    string Token
 );

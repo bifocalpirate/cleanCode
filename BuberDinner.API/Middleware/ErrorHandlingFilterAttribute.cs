@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace BuberDinner.API.Middleware;
+namespace BuberDinner.Api.Middleware;
 
 public class ErrorHandlingFilterAttribute:ExceptionFilterAttribute
 {

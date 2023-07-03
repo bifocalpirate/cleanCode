@@ -6,8 +6,12 @@
     <UserSecretsId>aa1a324b-c36c-4c60-a351-c3f4733d10d4</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuberDinner.Contracts\BuberDinner.Contracts.csproj" />
-    <ProjectReference Include="..\BuberDinner.Application\BuberDinner.Application.csproj" />
-    <ProjectReference Include="..\BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj" />
+    <ProjectReference Include="..\BuberDinner.Contracts\BuberDinner.Contracts.csproj"/>
+    <ProjectReference Include="..\BuberDinner.Application\BuberDinner.Application.csproj"/>
+    <ProjectReference Include="..\BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.3.0"/>
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0"/>
   </ItemGroup>
 </Project>
