@@ -1,17 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using BuberDinner.Contracts.Authentication;
 using ErrorOr;
-using BuberDinner.Application.Services.Authentication.Common;
-using MediatR;
-using BuberDinner.Application.Commands.Authentication.Register;
-using BuberDinner.Application.Commands.Authentication.Login;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using BuberDinner.Api.Common.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BuberDinner.Api.Controller;
 
 [ApiController]
+[Authorize]
 public class ApiController : ControllerBase
 {    
     protected IActionResult Problem(List<Error> errors)
