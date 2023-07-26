@@ -1,13 +1,13 @@
 # Dinner API
 
-- [Buber Dinner API](#buber-dinner-api)
+- [Dinner API](#dinner-api)
   - [Auth](#auth)
     - [Register](#register)
-    - [Register Request](#register-request)
-    - [Register Response](#register-response)
-  - [Login](#login)
-    - [Login Request](#login-request)
-    - [Login Response](#login-response)
+      - [Register Request](#register-request)
+      - [Register Response](#register-response)
+    - [Login](#login)
+      - [Login Request](#login-request)
+      - [Login Response](#login-response)
 
 ## Auth
 
@@ -74,3 +74,4 @@
         "token":"a20232132"
     }
 ```
+

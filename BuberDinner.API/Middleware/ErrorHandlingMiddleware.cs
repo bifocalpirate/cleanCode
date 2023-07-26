@@ -6,14 +6,20 @@ namespace BuberDinner.Api.Middleware;
 public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ErrorHandlingMiddleware"/> class.
+    /// </summary>
+    /// <param name="next"></param>
     public ErrorHandlingMiddleware(RequestDelegate next){
         _next = next;
     }
     public async Task Invoke(HttpContext context){
-        try{
-            await _next(context);
+        try
+        {
+            await this._next(context);
         }
-        catch(Exception ex){
+        catch (Exception ex)
+        {
             await HandleExceptionAsync(context, ex);
         }
     }
@@ -22,11 +28,10 @@ public class ErrorHandlingMiddleware
     {
         var code = HttpStatusCode.InternalServerError;
         var result = JsonConvert.SerializeObject(new {            
-                error =  "Error occurred while processing your request."
+                error = "Error occurred while processing your request.",
             });
         context.Response.ContentType = "application/json";
-        context.Response.StatusCode = (int) code;
+        context.Response.StatusCode = (int)code;
         return context.Response.WriteAsync(result);
-        
     }
 }

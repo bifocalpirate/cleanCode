@@ -3,13 +3,7 @@
 
 #nullable enable
 
-using System.Diagnostics;
 using BuberDinner.Api.Common.Http;
-using ErrorOr;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Options;
 
 namespace BuberDinner.Api.Common.Errors
 {
@@ -76,7 +70,7 @@ namespace BuberDinner.Api.Common.Errors
                 problemDetails.Title = title;
             }
 
-            ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
+            this.ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
 
             return problemDetails;
         }
@@ -85,7 +79,7 @@ namespace BuberDinner.Api.Common.Errors
         {
             problemDetails.Status ??= statusCode;
 
-            if (_options.ClientErrorMapping.TryGetValue(statusCode, out var clientErrorData))
+            if (this._options.ClientErrorMapping.TryGetValue(statusCode, out var clientErrorData))
             {
                 problemDetails.Title ??= clientErrorData.Title;
                 problemDetails.Type ??= clientErrorData.Link;
@@ -101,10 +95,8 @@ namespace BuberDinner.Api.Common.Errors
 
             var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
             if (errors is not null){
-                problemDetails.Extensions.Add("errorCodes",errors.Select(e=>e.Code));
+                problemDetails.Extensions.Add("errorCodes",errors.Select(e => e.Code));
             }
-
-            
         }
     }
 }

@@ -1,14 +1,18 @@
+// <copyright file="AuthenticationController.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 namespace BuberDinner.Api.Controller;
 
-using Microsoft.AspNetCore.Mvc;
+using BuberDinner.Application.Commands.Authentication.Login;
+using BuberDinner.Application.Commands.Authentication.Register;
+using BuberDinner.Application.Services.Authentication.Common;
 using BuberDinner.Contracts.Authentication;
 using ErrorOr;
-using BuberDinner.Application.Services.Authentication.Common;
-using MediatR;
-using BuberDinner.Application.Commands.Authentication.Register;
-using BuberDinner.Application.Commands.Authentication.Login;
 using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 [Route("auth")]
 [AllowAnonymous]
@@ -30,18 +34,18 @@ public class AuthenticationController : ApiController
         ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);
 
         return registerResult.Match(
-           authResult => Ok(_mapper.Map<AuthenticationResponse>(registerResult.Value)),
-            errors => Problem(errors));
+           authResult => Ok(_mapper.Map<AuthenticationResponse>(registerResult.Value)), errors => Problem(errors));
     }    
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
         var command =  _mapper.Map<LoginQuery>(request);
-        ErrorOr<AuthenticationResult> authResponse = await _mediator.Send(command);
+        ErrorOr<AuthenticationResult> authResponse = await this._mediator.Send(command);
         
         return authResponse.Match(
             authResults => Ok(_mapper.Map<AuthenticationResponse>(authResponse.Value)),
             errors => Problem(errors));
     }    
 }
+
